@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eyüp Taşkın, Software Engineer</title>
+<meta name="description" content="Eyüp Taşkın is a software engineer building iOS apps in SwiftUI and games in Unity. Based in Germany.">
+<link rel="icon" href="assets/img/TaskInGamesWhite.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#001233; --navy2:#002666; --blue:#0058DC; --sky:#91BDFF; --teal:#00F8C2;
+  --bg:#FFFFFF; --soft:#F5F8FD; --line:#E4E9F2; --muted:rgba(0,18,51,.62);
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"DM Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{overflow-x:clip;margin:0;background:var(--bg);color:var(--navy);font:400 1.0625rem/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 clamp(1.25rem,4vw,2.5rem)}
+
+/* top bar */
+.top{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0}
+.top b{font-weight:600;letter-spacing:-.01em}
+.pills{display:flex;gap:.5rem}
+.pill{display:inline-block;padding:.5rem 1rem;border-radius:9999px;border:1px solid var(--line);text-decoration:none;font-size:.92rem;font-weight:500;background:#fff}
+.pill:hover{border-color:var(--blue);color:var(--blue)}
+.pill.solid{background:var(--blue);border-color:var(--blue);color:#fff}
+.pill.solid:hover{background:var(--navy);border-color:var(--navy);color:#fff}
+
+/* hero */
+.hero{position:relative;padding:4.5rem 0 3.5rem}
+.hero::before{content:"";position:absolute;inset:-6rem -20vw auto -20vw;height:30rem;background:radial-gradient(50% 60% at 50% 0%,rgba(58,128,255,.22),rgba(145,189,255,.08) 55%,transparent 75%);pointer-events:none;z-index:-1}
+.hero .row{display:flex;align-items:center;justify-content:space-between;gap:2.5rem}
+.hero h1{font:500 clamp(2.5rem,6.4vw,4.75rem)/1.02 var(--sans);letter-spacing:-.04em;margin:0 0 1.5rem;max-width:13ch}
+.hero p{margin:0;color:var(--muted);font-size:1.2rem;max-width:36ch}
+.hero p b{color:var(--navy);font-weight:500}
+.avatar{position:relative;width:168px;height:168px;border-radius:50%;background:var(--soft);border:1px solid var(--line);flex:none;overflow:hidden}
+.avatar svg{position:absolute;inset:0;width:100%;height:100%}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+h2{font:500 clamp(1.6rem,3vw,2.1rem)/1.15 var(--sans);letter-spacing:-.03em;margin:0 0 1.5rem}
+section{padding:0 0 4.5rem}
+
+/* skills */
+.skills{display:grid;gap:.9rem}
+.skill{display:grid;grid-template-columns:7.5rem 1fr;gap:1rem;align-items:center}
+.skill>span{font:400 .82rem var(--mono);color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:.45rem}
+.tags i{font-style:normal;padding:.35rem .8rem;border-radius:9999px;background:var(--soft);border:1px solid var(--line);font-size:.93rem;font-weight:500}
+
+/* avelios */
+.now{position:relative;overflow:hidden;background:var(--navy);color:#fff;border-radius:24px;padding:clamp(1.75rem,5vw,3.25rem);margin-bottom:1.75rem}
+.now::before{content:"";position:absolute;right:-8rem;top:-10rem;width:30rem;height:30rem;background:radial-gradient(closest-side,rgba(58,128,255,.55),transparent);pointer-events:none}
+.now>*{position:relative}
+.live{display:inline-flex;align-items:center;gap:.55rem;font:400 .82rem var(--mono);color:var(--sky);margin-bottom:1.1rem}
+.live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(0,248,194,.18)}
+.now h3{font:500 clamp(1.8rem,4vw,2.9rem)/1.08 var(--sans);letter-spacing:-.035em;margin:0 0 1rem;max-width:18ch}
+.now p{margin:0 0 1.5rem;color:#C9DBF7;max-width:50ch}
+.now .uses{margin:1.5rem 0 .6rem;color:var(--sky);font-size:.95rem}
+.now .tags i{font-size:1rem;padding:.45rem 1rem;background:rgba(145,189,255,.1);border-color:rgba(145,189,255,.25);color:var(--sky)}
+.now .pill{margin-top:1.5rem;background:var(--teal);border-color:var(--teal);color:var(--navy);font-weight:600}
+.now .pill:hover{background:#fff;border-color:#fff;color:var(--navy)}
+
+/* rows */
+.item{display:grid;grid-template-columns:12rem 1fr;gap:.2rem 1.5rem;padding:1rem 0;border-top:1px solid var(--line)}
+.when{font:400 .82rem var(--mono);color:var(--muted);padding-top:.25rem}
+.when b{display:block;color:var(--navy);font:500 .95rem var(--sans);margin-top:.1rem}
+.item h3{font:500 1.1rem/1.35 var(--sans);letter-spacing:-.01em;margin:0}
+.item p{margin:.1rem 0 0;color:var(--muted)}
+
+/* animotive */
+.feature{display:grid;grid-template-columns:1.1fr 1fr;border:1px solid var(--line);border-radius:24px;overflow:hidden;margin-bottom:1.25rem;background:#fff}
+.feature .pic{background:var(--soft);min-height:220px;display:flex;align-items:center;justify-content:center;padding:2rem}
+.feature .pic img{display:block;width:auto;height:auto;max-width:70%;max-height:150px;object-fit:contain}
+.feature .txt{padding:clamp(1.5rem,3.5vw,2.5rem);display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.feature .kind{font:400 .82rem var(--mono);color:var(--blue);margin-bottom:.7rem}
+.feature h3{font:500 2.2rem/1.05 var(--sans);letter-spacing:-.04em;margin:0 0 .8rem}
+.feature p{margin:0 0 1.4rem;color:var(--muted)}
+
+.feature .uses{margin:0 0 .6rem;color:var(--muted);font-size:.95rem}
+.proj{display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:1rem .9rem;margin:0 -.9rem;border-top:1px solid var(--line);text-decoration:none;border-radius:16px;color:inherit;transition:background .15s}
+.proj h3{font:500 1.15rem/1.3 var(--sans);letter-spacing:-.015em;margin:0}
+.proj p{margin:.1rem 0 0;color:var(--muted);font-size:.95rem}
+.proj .go{flex:none;padding:.4rem .9rem;border:1px solid var(--line);border-radius:9999px;font-size:.9rem;font-weight:500;color:var(--blue);background:#fff;transition:background .15s,color .15s,border-color .15s}
+.proj:hover{background:var(--soft);border-top-color:transparent}
+.proj:hover .go{background:var(--blue);border-color:var(--blue);color:#fff}
+.proj:hover h3{color:var(--blue)}
+.item h3 .lnk{text-decoration-color:rgba(0,88,220,.35)}
+.ic{position:relative;display:block;width:56px;height:56px;flex:none;border-radius:14px;overflow:hidden;background:var(--soft);border:1px solid var(--line)}
+.ic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.proj .l{display:flex;gap:1rem;align-items:center}
+.lnk{color:var(--blue);text-decoration:underline;text-decoration-color:rgba(0,88,220,.35);text-underline-offset:.22em}
+.lnk:hover{text-decoration-color:var(--blue)}
+
+footer{padding:1.75rem 0 2.5rem;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+
+@media (max-width:720px){
+  .hero{padding-top:2.5rem}
+  .hero .row{flex-direction:column-reverse;align-items:flex-start}
+  .avatar{width:96px;height:96px}
+  .skill{grid-template-columns:1fr;gap:.4rem}
+  .item{grid-template-columns:1fr}
+  .feature{grid-template-columns:1fr}
+  .feature .pic{min-height:150px;padding:1.5rem}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <b>Eyüp Taşkın</b>
+    <nav class="pills" aria-label="Links">
+      <a class="pill" href="https://github.com/TaskInGames">GitHub</a>
+      <a class="pill solid" href="https://www.linkedin.com/in/eyuptaskin">LinkedIn</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="row">
+      <div>
+        <h1>iOS and game developer.</h1>
+        <p><b>Working student at Avelios Medical</b>, Munich. M.A. student at Hochschule Darmstadt.</p>
+      </div>
+      <div class="avatar">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="38" r="17" fill="#91BDFF"/><path d="M16 100c0-21 15-35 34-35s34 14 34 35z" fill="#91BDFF"/></svg>
+        <img src="assets/img/man.png" alt="Portrait of Eyüp Taşkın" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
+
+  <section aria-labelledby="sk">
+    <h2 id="sk">Skills</h2>
+    <div class="skills">
+      <div class="skill"><span>Apple</span><div class="tags"><i>Swift</i><i>SwiftUI</i><i>GraphQL</i><i>Apollo</i></div></div>
+      <div class="skill"><span>Games</span><div class="tags"><i>Unity</i><i>C#</i><i>Unreal Engine</i><i>HLSL/GLSL</i><i>Photon Bolt</i></div></div>
+      <div class="skill"><span>Backend</span><div class="tags"><i>Python (Flask)</i><i>C# (.NET)</i><i>REST</i><i>JWT</i><i>MySQL</i></div></div>
+      <div class="skill"><span>Tools</span><div class="tags"><i>Git</i><i>Postman</i><i>AWS</i><i>Altair</i></div></div>
+      <div class="skill"><span>Languages</span><div class="tags"><i>English C1</i><i>German B1</i><i>Turkish native</i></div></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="ex">
+    <h2 id="ex">Experience</h2>
+
+    <div class="now">
+      <div class="live">Since Jun 2026</div>
+      <h3>Working student at Avelios Medical</h3>
+      <p>Avelios builds an AI-native hospital information system in Munich.</p>
+      <p class="uses">At Avelios I work with</p>
+      <div class="tags"><i>SwiftUI</i><i>GraphQL</i><i>Apollo</i></div>
+      <a class="pill" href="https://www.avelios.com/">avelios.com &#8599;</a>
+    </div>
+
+    <div class="item"><div class="when">Feb to Jun 2026<b>5 months</b></div><div><h3>QA Intern, <a class="lnk" href="https://www.envision-entertainment.de/">Envision Entertainment &#8599;</a></h3><p>Ingelheim am Rhein, Germany. Studio behind Pioneers of Pagonia</p></div></div>
+    <div class="item"><div class="when">Aug to Oct 2025<b>3 months</b></div><div><h3>Student Research Assistant, <a class="lnk" href="https://www.tu-darmstadt.de/">TU Darmstadt &#8599;</a></h3><p>Darmstadt, Germany</p></div></div>
+    <div class="item"><div class="when">Sep 2022 to Mar 2025<b>2 years 7 months</b></div><div><h3>Unity Developer, <a class="lnk" href="https://www.animotive.com/">Animotive &#8599;</a></h3><p>Belfast, UK. Formerly RETìníZE. Multiplayer, cloud and VR work</p></div></div>
+    <div class="item"><div class="when">Nov 2020 to Aug 2022<b>1 year 10 months</b></div><div><h3>Game Developer, <a class="lnk" href="https://www.linkedin.com/company/vantaplay/">VantaPlay Games &#8599;</a></h3><p>Istanbul, Turkey. Hyper-casual mobile games, shaders, leaderboard backends</p></div></div>
+  </section>
+
+  <section aria-labelledby="wk">
+    <h2 id="wk">Things I've built</h2>
+
+    <div class="feature">
+      <div class="pic"><img src="assets/img/portfolio/Animotive.png" alt="Animotive screenshot" onerror="this.parentNode.style.display='none'"></div>
+      <div class="txt">
+        <div class="kind">VR and desktop</div>
+        <h3>Animotive</h3>
+        <p>An immersive animation platform that combines VR animation, motion capture and real-time collaboration. I built its multiplayer and cloud features, VR and desktop UI, and performance work.</p>
+        <p class="uses">At Animotive I worked with</p>
+        <div class="tags" style="margin-bottom:1.4rem"><i>Unity</i><i>C#</i><i>Photon Bolt</i><i>Addressables</i><i>Custom shaders</i></div>
+        <a class="pill solid" href="https://www.animotive.com/">animotive.com &#8599;</a>
+      </div>
+    </div>
+
+    <a class="proj" href="https://store.steampowered.com/app/5159400/Get_Out_Sisyphus/"><div class="l"><span class="ic"><img src="assets/img/portfolio/GetOutSisyphus.png" alt="" onerror="this.remove()"></span><div><h3>Get Out Sisyphus!</h3><p>Survivor-like roguelite in Unity. Ongoing university project with a team of six, where I'm a programmer</p></div></div><span class="go">Steam &#8599;</span></a>
+    <a class="proj" href="https://store.steampowered.com/app/2155180/Pioneers_of_Pagonia/"><div class="l"><span class="ic"><img src="assets/img/portfolio/PioneersOfPagonia.png" alt="" onerror="this.remove()"></span><div><h3>Pioneers of Pagonia</h3><p>Settlement-building game by Envision Entertainment. I did QA testing during my internship</p></div></div><span class="go">Steam &#8599;</span></a>
+    <a class="proj" href="https://apps.apple.com/tr/app/wheel-smash/id1498982970?l=tr"><div class="l"><span class="ic"><img src="assets/img/portfolio/WheelSmash.png" alt="" onerror="this.remove()"></span><div><h3>Wheel Smash</h3><p>iOS game</p></div></div><span class="go">App Store &#8599;</span></a>
+  </section>
+
+  <section aria-labelledby="ed">
+    <h2 id="ed">Education</h2>
+    <div class="item"><div class="when">2025 to 2027</div><div><h3>M.A. Games and Animation</h3><p><a class="lnk" href="https://h-da.de/en/">Hochschule Darmstadt &#8599;</a>, Darmstadt, Germany</p></div></div>
+    <div class="item"><div class="when">2015 to 2020</div><div><h3>B.Sc. Computer Engineering</h3><p><a class="lnk" href="https://www.cankaya.edu.tr/index_en.php">Çankaya University &#8599;</a>, Ankara, Turkey</p></div></div>
+  </section>
+
+  <footer>&copy; <span id="y">2026</span> Eyüp Taşkın</footer>
+</div>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
