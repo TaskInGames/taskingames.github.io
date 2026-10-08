@@ -59,9 +59,15 @@ section{padding:0 0 4.5rem}
 .now{position:relative;overflow:hidden;background:var(--navy);color:#fff;border-radius:24px;padding:clamp(1.75rem,5vw,3.25rem);margin-bottom:1.75rem}
 .now::before{content:"";position:absolute;right:-8rem;top:-10rem;width:30rem;height:30rem;background:radial-gradient(closest-side,rgba(58,128,255,.55),transparent);pointer-events:none}
 .now>*{position:relative}
-.live{display:inline-flex;align-items:center;gap:.55rem;font:400 .82rem var(--mono);color:var(--sky);margin-bottom:1.1rem}
+.now-head{display:flex;align-items:center;gap:1.25rem;margin-bottom:1.5rem}
+.head-text{display:flex;flex-direction:column;gap:.5rem;min-width:0}
+.logo-tile{display:flex;align-items:center;justify-content:center;width:88px;height:88px;flex:none;padding:14px;border-radius:20px;background:#fff}
+.logo-tile img{display:block;max-width:100%;max-height:100%;object-fit:contain}
+.feature .logo-tile{background:var(--soft);border:1px solid var(--line);padding:0;overflow:hidden}
+.feature .logo-tile img{width:100%;height:100%;max-width:none;max-height:none;object-fit:cover}
+.live{display:inline-flex;align-items:center;gap:.55rem;font:400 .82rem var(--mono);color:var(--sky)}
 .live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(0,248,194,.18)}
-.now h3{font:500 clamp(1.8rem,4vw,2.9rem)/1.08 var(--sans);letter-spacing:-.035em;margin:0 0 1rem;max-width:18ch}
+.now h3{font:500 clamp(1.6rem,4vw,2.9rem)/1.08 var(--sans);letter-spacing:-.035em;margin:0;max-width:18ch}
 .now p{margin:0 0 1.5rem;color:#C9DBF7;max-width:50ch}
 .now .uses{margin:1.5rem 0 .6rem;color:var(--sky);font-size:.95rem}
 .now .tags i{font-size:1rem;padding:.45rem 1rem;background:rgba(145,189,255,.1);border-color:rgba(145,189,255,.25);color:var(--sky)}
@@ -76,15 +82,15 @@ section{padding:0 0 4.5rem}
 .item p{margin:.1rem 0 0;color:var(--muted)}
 
 /* animotive */
-.feature{display:grid;grid-template-columns:1.1fr 1fr;border:1px solid var(--line);border-radius:24px;overflow:hidden;margin-bottom:1.25rem;background:#fff}
-.feature .pic{background:var(--soft);min-height:220px;display:flex;align-items:center;justify-content:center;padding:2rem}
-.feature .pic img{display:block;width:auto;height:auto;max-width:70%;max-height:150px;object-fit:contain}
-.feature .txt{padding:clamp(1.5rem,3.5vw,2.5rem);display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
-.feature .kind{font:400 .82rem var(--mono);color:var(--blue);margin-bottom:.7rem}
-.feature h3{font:500 2.2rem/1.05 var(--sans);letter-spacing:-.04em;margin:0 0 .8rem}
-.feature p{margin:0 0 1.4rem;color:var(--muted)}
+.feature{display:grid;grid-template-columns:1fr;border:1px solid var(--line);border-radius:24px;overflow:hidden;margin-bottom:1.25rem;background:#fff}
+.feature .txt{padding:clamp(1.25rem,3.5vw,2rem);display:flex;flex-direction:column;align-items:flex-start}
+.feature .txt p{max-width:64ch}
+.feature .foot{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.25rem}
+.feature .kind{font:400 .82rem var(--mono);color:var(--blue)}
+.feature h3{font:500 1.75rem/1.1 var(--sans);letter-spacing:-.03em;margin:0}
+.feature p{margin:0 0 1rem;color:var(--muted)}
 
-.feature .uses{margin:0 0 .6rem;color:var(--muted);font-size:.95rem}
+.feature .uses{margin:0 0 .5rem;color:var(--muted);font-size:.95rem}
 .proj{display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:1rem .9rem;margin:0 -.9rem;border-top:1px solid var(--line);text-decoration:none;border-radius:16px;color:inherit;transition:background .15s}
 .proj h3{font:500 1.15rem/1.3 var(--sans);letter-spacing:-.015em;margin:0}
 .proj p{margin:.1rem 0 0;color:var(--muted);font-size:.95rem}
@@ -99,16 +105,19 @@ section{padding:0 0 4.5rem}
 .lnk{color:var(--blue);text-decoration:underline;text-decoration-color:rgba(0,88,220,.35);text-underline-offset:.22em}
 .lnk:hover{text-decoration-color:var(--blue)}
 
-footer{padding:1.75rem 0 2.5rem;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+footer{position:relative;padding:3rem 0;color:rgba(201,219,247,.85);font-size:.9rem}
+footer::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);z-index:-1;pointer-events:none;background:radial-gradient(40% 140% at 85% 0%,rgba(58,128,255,.45),transparent 70%),var(--navy)}
 
 @media (max-width:720px){
+  .logo-tile{width:64px;height:64px;padding:10px;border-radius:16px}
+  .now-head{gap:1rem}
+  .feature h3{font-size:1.75rem}
   .hero{padding-top:2.5rem}
   .hero .row{flex-direction:column-reverse;align-items:flex-start}
   .avatar{width:96px;height:96px}
   .skill{grid-template-columns:1fr;gap:.4rem}
   .item{grid-template-columns:1fr}
   .feature{grid-template-columns:1fr}
-  .feature .pic{min-height:150px;padding:1.5rem}
 }
 </style>
 </head>
@@ -127,7 +136,7 @@ footer{padding:1.75rem 0 2.5rem;border-top:1px solid var(--line);color:var(--mut
     <div class="row">
       <div>
         <h1>iOS and game developer.</h1>
-        <p><b>Working student at Avelios Medical</b>, Munich. M.A. student at Hochschule Darmstadt.</p>
+        <p><b>Working student at Avelios Medical</b> in Munich, while studying for an M.A. in Games and Animation at Hochschule Darmstadt.</p>
       </div>
       <div class="avatar">
         <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="38" r="17" fill="#91BDFF"/><path d="M16 100c0-21 15-35 34-35s34 14 34 35z" fill="#91BDFF"/></svg>
@@ -139,7 +148,7 @@ footer{padding:1.75rem 0 2.5rem;border-top:1px solid var(--line);color:var(--mut
   <section aria-labelledby="sk">
     <h2 id="sk">Skills</h2>
     <div class="skills">
-      <div class="skill"><span>Apple</span><div class="tags"><i>Swift</i><i>SwiftUI</i><i>GraphQL</i><i>Apollo</i></div></div>
+      <div class="skill"><span>iOS</span><div class="tags"><i>Swift</i><i>SwiftUI</i><i>GraphQL</i><i>Apollo</i></div></div>
       <div class="skill"><span>Games</span><div class="tags"><i>Unity</i><i>C#</i><i>Unreal Engine</i><i>HLSL/GLSL</i><i>Photon Bolt</i></div></div>
       <div class="skill"><span>Backend</span><div class="tags"><i>Python (Flask)</i><i>C# (.NET)</i><i>REST</i><i>JWT</i><i>MySQL</i></div></div>
       <div class="skill"><span>Tools</span><div class="tags"><i>Git</i><i>Postman</i><i>AWS</i><i>Altair</i></div></div>
@@ -151,8 +160,13 @@ footer{padding:1.75rem 0 2.5rem;border-top:1px solid var(--line);color:var(--mut
     <h2 id="ex">Experience</h2>
 
     <div class="now">
-      <div class="live">Since Jun 2026</div>
-      <h3>Working student at Avelios Medical</h3>
+      <div class="now-head">
+        <span class="logo-tile"><img src="assets/img/portfolio/Avelios.png" alt="Avelios logo" onerror="this.parentNode.remove()"></span>
+        <div class="head-text">
+          <div class="live">Since Jun 2026</div>
+          <h3>Working student at Avelios Medical</h3>
+        </div>
+      </div>
       <p>Avelios builds an AI-native hospital information system in Munich.</p>
       <p class="uses">At Avelios I work with</p>
       <div class="tags"><i>SwiftUI</i><i>GraphQL</i><i>Apollo</i></div>
@@ -169,14 +183,20 @@ footer{padding:1.75rem 0 2.5rem;border-top:1px solid var(--line);color:var(--mut
     <h2 id="wk">Things I've built</h2>
 
     <div class="feature">
-      <div class="pic"><img src="assets/img/portfolio/Animotive.png" alt="Animotive screenshot" onerror="this.parentNode.style.display='none'"></div>
       <div class="txt">
-        <div class="kind">VR and desktop</div>
-        <h3>Animotive</h3>
+        <div class="now-head">
+          <span class="logo-tile"><img src="assets/img/portfolio/Animotive.png" alt="Animotive logo" onerror="this.parentNode.remove()"></span>
+          <div class="head-text">
+            <div class="kind">VR and desktop</div>
+            <h3>Animotive</h3>
+          </div>
+        </div>
         <p>An immersive animation platform that combines VR animation, motion capture and real-time collaboration. I built its multiplayer and cloud features, VR and desktop UI, and performance work.</p>
         <p class="uses">At Animotive I worked with</p>
-        <div class="tags" style="margin-bottom:1.4rem"><i>Unity</i><i>C#</i><i>Photon Bolt</i><i>Addressables</i><i>Custom shaders</i></div>
-        <a class="pill solid" href="https://www.animotive.com/">animotive.com &#8599;</a>
+        <div class="foot">
+          <div class="tags"><i>Unity</i><i>C#</i><i>Photon Bolt</i><i>Addressables</i><i>Custom shaders</i></div>
+          <a class="pill solid" href="https://www.animotive.com/">animotive.com &#8599;</a>
+        </div>
       </div>
     </div>
 
@@ -189,6 +209,11 @@ footer{padding:1.75rem 0 2.5rem;border-top:1px solid var(--line);color:var(--mut
     <h2 id="ed">Education</h2>
     <div class="item"><div class="when">2025 to 2027</div><div><h3>M.A. Games and Animation</h3><p><a class="lnk" href="https://h-da.de/en/">Hochschule Darmstadt &#8599;</a>, Darmstadt, Germany</p></div></div>
     <div class="item"><div class="when">2015 to 2020</div><div><h3>B.Sc. Computer Engineering</h3><p><a class="lnk" href="https://www.cankaya.edu.tr/index_en.php">Çankaya University &#8599;</a>, Ankara, Turkey</p></div></div>
+  </section>
+
+  <section aria-labelledby="hb">
+    <h2 id="hb">Hobbies</h2>
+    <div class="tags"><i>Fitness training</i><i>Electric guitar</i><i>Coffee brewing</i><i>Travel</i><i>Camping</i><i>Reading</i></div>
   </section>
 
   <footer>&copy; <span id="y">2026</span> Eyüp Taşkın</footer>
